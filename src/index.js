@@ -11,6 +11,8 @@ let latestRelease;
 
 const getLatestReleaseObject = () => {
   const object = {};
+  object[`${latestRelease}`] = {};
+
   artworks.forEach((artwork) => {
     object[`${latestRelease}`][artwork] = objectShape;
   });
