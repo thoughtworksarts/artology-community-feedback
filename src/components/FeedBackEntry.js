@@ -45,12 +45,42 @@ export default class FeedbackEntry {
   getAverageInteractiveScoreFor(artwork) {
     let cumScore = 0;
     let count = 0;
+    console.log(this.effectiveScores);
     this.effectiveScores.forEach((effectiveScore) => {
       if (effectiveScore.getArtwork() === artwork && effectiveScore.isInteractive()) {
         cumScore += effectiveScore.getScore();
         count++;
       }
     });
+    console.log(count);
     return count === 0 ? cumScore : cumScore / count;
+  }
+
+  getCountry() {
+    return this.country;
+  }
+
+  getEthnicity() {
+    return this.ethnicity;
+  }
+
+  getSkintone() {
+    return this.skintone;
+  }
+
+  getGender() {
+    return this.gender;
+  }
+
+  getEnvironment() {
+    return this.environment;
+  }
+
+  getAppVersion() {
+    return this.appVersion;
+  }
+
+  getDeviceCategory() {
+    return this.deviceCategory;
   }
 }

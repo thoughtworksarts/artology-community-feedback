@@ -13,7 +13,7 @@ describe('FeedbackEntry', () => {
       new EffectiveScore('5', 'afl', true),
       new EffectiveScore('4', 'pio', false),
       new EffectiveScore('2', 'general', false),
-      new EffectiveScore('2', 'general', false),
+      new EffectiveScore('3', 'output', false),
       new EffectiveScore('2', 'pio', false),
     ];
 
@@ -31,7 +31,7 @@ describe('FeedbackEntry', () => {
 
   it('should get the average score for a feedback entry', () => {
     const feedbackEntry = new FeedbackEntry(data);
-    expect(feedbackEntry.getAverageEffectiveScore()).toEqual(3);
+    expect(feedbackEntry.getAverageEffectiveScore()).toEqual(3.125);
   });
 
   describe('getAverageScoreFor', () => {
@@ -42,7 +42,7 @@ describe('FeedbackEntry', () => {
 
     it('should get the average score for output for a feedback entry', () => {
       const feedbackEntry = new FeedbackEntry(data);
-      expect(feedbackEntry.getAverageScoreFor('output')).toEqual(2);
+      expect(feedbackEntry.getAverageScoreFor('output')).toEqual(2.5);
     });
 
     it('should get the average score for pio for a feedback entry', () => {
