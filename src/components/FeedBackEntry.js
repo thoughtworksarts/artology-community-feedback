@@ -45,14 +45,12 @@ export default class FeedbackEntry {
   getAverageInteractiveScoreFor(artwork) {
     let cumScore = 0;
     let count = 0;
-    console.log(this.effectiveScores);
     this.effectiveScores.forEach((effectiveScore) => {
       if (effectiveScore.getArtwork() === artwork && effectiveScore.isInteractive()) {
         cumScore += effectiveScore.getScore();
         count++;
       }
     });
-    console.log(count);
     return count === 0 ? cumScore : cumScore / count;
   }
 

@@ -86,6 +86,12 @@ describe('FeedbackForm', () => {
       expect(feedbackForm.filterBy(feedbackEntries, 'ethnicity', 'white').length).toEqual(2);
       expect(feedbackForm.filterBy(feedbackEntries, 'ethnicity', 'yellow').length).toEqual(0);
     });
+
+    it('should filter by device category', () => {
+      const feedbackForm = new FeedbackForm(feedbackEntries);
+      expect(feedbackForm.filterBy(feedbackEntries, 'device', 'android').length).toEqual(1);
+      expect(feedbackForm.filterBy(feedbackEntries, 'device', 'low end').length).toEqual(2);
+    });
   });
 
   describe('getOverallEffectiveScoreFor', () => {

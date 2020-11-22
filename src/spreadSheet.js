@@ -1,10 +1,12 @@
 import { FINAL_DATA, FORM_RESPONSE_1 } from './constants';
 
-export const effectiveScoreColumns = [13, 15, 17, 20, 23, 25, 27, 30, 32, 36]; // Column numbers for effective score data
+export const effectiveScoreColumns = [13, 15, 17, 20, 23, 25, 27, 30, 32, 34, 37, 39, 43]; // Column numbers for effective score data
 export const aflEffectiveScoreColumns = [20, 23, 25]; // Column numbers for effective score data for A Fathers Lulliby
 export const outputEffectiveScoreColumns = [27, 30, 32]; // Column numbers for effective score data for Output
+export const pioEffectiveScoreColumns = [34, 37, 39]; // Column numbers for effective score data for Perception I/O
 export const aflInteractiveExperienceColumns = [23, 25]; // Column numbers for interactive experience score data for A Fathers Lulliby
 export const outputInteractiveExperienceColumns = [30, 32]; // Column numbers for interactive experience score data for Output
+export const pioInteractiveExperienceColumns = [37, 39]; // Column numbers for interactive experience score data for Output
 export const usageTypeColumn = 19; // Column number for usage type (Indoor/Outdoor) data
 export const deviceCategoryColumn = 11; // Column number for device category data (high-end, low-end, android)
 export const releaseVersionColumn = 2; // Column Number for release dates/versions
