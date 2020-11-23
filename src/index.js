@@ -12,8 +12,7 @@ import * as form from './config';
 
 // eslint-disable-next-line no-unused-vars
 
-export default function main() {
-  // Get Raw data an process
+function getFormEntries() {
   const formEntries = [];
   for (let i = 1; i < lastRow; i++) {
     const appVersion = formData[i][form.releaseVersionColumn];
@@ -39,7 +38,17 @@ export default function main() {
       })
     );
   }
+  return formEntries;
+}
+
+export default function main() {
+  // Get all user entries
+  const formEntries = getFormEntries();
+
+  // Create a new Form
   const feedbackForm = new FeedbackForm(formEntries);
+
+  // Print tables to spreadsheet
   printer.printReleaseVersionObj(
     convertData.generateFinalDataEffectScoreByVersion(
       feedbackForm,
