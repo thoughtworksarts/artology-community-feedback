@@ -1,13 +1,14 @@
 /* eslint-disable no-plusplus */
 import * as utility from './utility';
 import { formData, lastRow, getListOfRelaseVersions } from './spreadSheet';
-import * as form from './spreadSheet';
+import * as init from './spreadSheet';
 import FeedbackEntry from './components/FeedBackEntry';
 import FeedbackForm from './components/FeedbackForm';
-import * as convertData from './dataPorcessors/convertToFinal';
+import * as convertData from './dataPorcessors/outgoingData';
 import * as printer from './printer';
-import * as processRawData from './dataPorcessors/convertFromRawData';
-import { artworks, environments, categories, deviceCategories } from './artowork';
+import * as incomingData from './dataPorcessors/incomingData';
+import { artworks, environments, categories, deviceCategories } from './config';
+import * as form from './config';
 
 // eslint-disable-next-line no-unused-vars
 
@@ -34,7 +35,7 @@ export default function main() {
         skintone: userSkintone,
         deviceCategory: userDeviceCategory,
         environment: userEnvironment,
-        effectiveScores: processRawData.processEffectiveScores(formData, i),
+        effectiveScores: incomingData.processEffectiveScores(formData, i),
       })
     );
   }
@@ -46,14 +47,14 @@ export default function main() {
       environments,
       'environment'
     ),
-    form.finalDataSheet,
+    init.finalDataSheet,
     ['Release Version', 'Overall', 'Indoor', 'Outdoor'],
     0
   );
 
   let tableStartColumn = 7;
   categories.forEach((category) => {
-    const listOfUniqueEntries = form.getAllValuesFor(category);
+    const listOfUniqueEntries = init.getAllValuesFor(category);
 
     printer.printDistroTable(
       convertData.generateScoresForCategory(
@@ -64,7 +65,7 @@ export default function main() {
         feedbackForm
       ),
       category,
-      form.finalDataSheet,
+      init.finalDataSheet,
       tableStartColumn
     );
     tableStartColumn += 6;
@@ -72,7 +73,7 @@ export default function main() {
 
   printer.printArtworkEffectiveScore(
     convertData.generateEffectiveScoreObjectFor(artworks, '1.0 (14)', feedbackForm),
-    form.finalDataSheet,
+    init.finalDataSheet,
     31,
     'Average Effective Score'
   );
@@ -84,14 +85,14 @@ export default function main() {
       deviceCategories,
       'device'
     ),
-    form.finalDataSheet,
+    init.finalDataSheet,
     ['Release Version', 'Low End (iPhone)', 'High End (iPhone)', 'Android'],
     35
   );
 
   printer.printArtworkEffectiveScore(
     convertData.generateEffectiveScoreObjectFor(artworks, '1.0 (14)', feedbackForm, true),
-    form.finalDataSheet,
+    init.finalDataSheet,
     41,
     'Interactive Portion Effective Score'
   );
