@@ -46,47 +46,15 @@ export function printDistroTable(object, category, finalDataSheet, startTableCol
   });
 }
 
-export function printArtworkEffectiveScore(object, finalDataSheet, startTableColumn) {
-  finalDataSheet.getRange(2, startTableColumn + 1).setValue('Average Effective Score');
+export function printArtworkEffectiveScore(object, finalDataSheet, startTableColumn, columnTitle) {
+  finalDataSheet.getRange(2, startTableColumn + 1).setValue(columnTitle);
   Object.keys(object).forEach((key, idx) => {
     // Set column Header
     finalDataSheet.getRange(idx + 3, startTableColumn).setValue(key.toUpperCase());
     // Fill in column Data
-    finalDataSheet.getRange(idx + 3, 32).setValue(object[key]);
+    finalDataSheet.getRange(idx + 3, startTableColumn + 1).setValue(object[key]);
   });
 }
-
-// export function printEffectiveScorePerDeviceCategory(releaseVersionObj, finalDataSheet) {}
-// export function printEffectiveScorePerDeviceCategory(releaseVersionObj, finalDataSheet) {
-//   ['Release Version', 'Low End (iPhone)', 'High End (iPhone)', 'Android'].forEach((header, index) =>
-//     finalDataSheet.getRange(2, index + 36).setValue(header)
-//   );
-//   Object.keys(releaseVersionObj)
-//     .sort()
-//     .reverse()
-//     .forEach((key, index) => {
-//       const value = releaseVersionObj[`${key}`];
-//       const lowEndTotal = value.lowEnd.totalScore;
-//       const lowEndTotalCount = value.lowEnd.count;
-//       const highEndTotal = value.highEnd.totalScore;
-//       const highEndTotalCount = value.highEnd.count;
-//       const androidTotal = value.android.totalScore;
-//       const androidTotalCount = value.android.count;
-
-//       const avgLowEnd = lowEndTotalCount != 0 ? lowEndTotal / lowEndTotalCount : 0;
-//       const avgHighEnd = highEndTotalCount != 0 ? highEndTotal / highEndTotalCount : 0;
-//       const avgAndroid = androidTotalCount != 0 ? androidTotal / androidTotalCount : 0;
-
-//       // Set release Date Column
-//       finalDataSheet.getRange(index + 3, 36).setValue(key);
-//       // Set Low End Average Eff column
-//       finalDataSheet.getRange(index + 3, 37).setValue(avgLowEnd);
-//       // Set High End Avg Eff Column data
-//       finalDataSheet.getRange(index + 3, 38).setValue(avgHighEnd);
-//       // Set Android Avg Eff Column
-//       finalDataSheet.getRange(index + 3, 39).setValue(avgAndroid);
-//     });
-// }
 
 export function printInteractiveExpTable(object, finalDataSheet, latestRelease) {
   // Set column Name

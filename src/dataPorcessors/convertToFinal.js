@@ -57,12 +57,18 @@ export function generateScoresForCategory(
   return obj;
 }
 
-export function generateFinalEffectiveScoreObjectFor(artworks, releaseVersion, feedbackForm) {
+export function generateEffectiveScoreObjectFor(
+  artworks,
+  releaseVersion,
+  feedbackForm,
+  isInteractive = false
+) {
   const obj = {};
+  const filterBy = { version: releaseVersion };
   artworks.forEach((artwork) => {
-    obj[artwork] = feedbackForm.getArtworkEffectiveScoreFor(artwork, {
-      version: releaseVersion,
-    });
+    obj[artwork] = !isInteractive
+      ? feedbackForm.getArtworkEffectiveScoreFor(artwork, filterBy)
+      : feedbackForm.getArtworkInteractiveEffectiveScoreFor(artwork, filterBy);
   });
 
   return obj;

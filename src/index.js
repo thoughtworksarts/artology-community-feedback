@@ -71,9 +71,10 @@ export default function main() {
   });
 
   printer.printArtworkEffectiveScore(
-    convertData.generateFinalEffectiveScoreObjectFor(artworks, '1.0 (14)', feedbackForm),
+    convertData.generateEffectiveScoreObjectFor(artworks, '1.0 (14)', feedbackForm),
     form.finalDataSheet,
-    31
+    31,
+    'Average Effective Score'
   );
 
   printer.printReleaseVersionObj(
@@ -86,6 +87,13 @@ export default function main() {
     form.finalDataSheet,
     ['Release Version', 'Low End (iPhone)', 'High End (iPhone)', 'Android'],
     35
+  );
+
+  printer.printArtworkEffectiveScore(
+    convertData.generateEffectiveScoreObjectFor(artworks, '1.0 (14)', feedbackForm, true),
+    form.finalDataSheet,
+    41,
+    'Interactive Portion Effective Score'
   );
 }
 
