@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 import { APP_RELEASE_VERSIONS, FINAL_DATA, FORM_RESPONSE_1 } from './constants';
 import * as form from './config';
+import { onOpen } from './helpers/menu';
 
 export const spreadSheet = SpreadsheetApp.getActiveSpreadsheet(); // Get active sheet
 export const ui = SpreadsheetApp.getUi();
@@ -48,3 +49,5 @@ export function getAllValuesFor(category) {
 
   return items;
 }
+
+onOpen(ui);
