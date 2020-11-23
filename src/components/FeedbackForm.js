@@ -56,16 +56,6 @@ export default class FeedbackForm {
     return denominator === 0 ? 0 : sumUpAvgScoresFor(feedbackEntries, artwork) / denominator;
   }
 
-  getArtworkEffectiveScoreFor(artwork, filterObject = {}) {
-    let { feedbackEntries } = this;
-    Object.keys(filterObject).forEach((key) => {
-      feedbackEntries = this.filterBy(feedbackEntries, key, filterObject[key]);
-    });
-
-    const denominator = feedbackEntries.length;
-    return denominator === 0 ? 0 : sumUpAvgScoresFor(feedbackEntries, artwork) / denominator;
-  }
-
   getArtworkInteractiveEffectiveScoreFor(artwork, filterObject = {}) {
     let { feedbackEntries } = this;
     Object.keys(filterObject).forEach((key) => {
