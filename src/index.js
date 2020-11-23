@@ -1,12 +1,13 @@
 /* eslint-disable no-plusplus */
 import * as utility from './utility';
-import { formData, lastRow } from './spreadSheet';
+import { formData, lastRow, getListOfRelaseVersions } from './spreadSheet';
 import * as form from './spreadSheet';
 import FeedbackEntry from './components/FeedBackEntry';
 import FeedbackForm from './components/FeedbackForm';
 import * as convertData from './dataPorcessors/convertToFinal';
 import * as printer from './printer';
 import * as processRawData from './dataPorcessors/convertFromRawData';
+import { artworks, environments, categories, deviceCategories } from './artowork';
 
 // eslint-disable-next-line no-unused-vars
 
@@ -19,7 +20,9 @@ export default function main() {
     const usergender = utility.processGenderData(formData[i][form.genderColumn]);
     const userEthnicity = formData[i][form.ethnicityColumn].toLowerCase();
     const userSkintone = formData[i][form.skintoneColumn].toLowerCase();
-    const userDeviceCategory = formData[i][form.deviceCategoryColumn].toLowerCase();
+    const userDeviceCategory = utility.processDeviceCategoryData(
+      formData[i][form.deviceCategoryColumn]
+    );
     const userEnvironment = utility.processEnvironmentData(formData[i][form.usageTypeColumn]);
     // eslint-disable-next-line object-shorthand
     formEntries.push(
@@ -29,22 +32,60 @@ export default function main() {
         gender: usergender,
         ethnicity: userEthnicity,
         skintone: userSkintone,
-        devieCategory: userDeviceCategory,
+        deviceCategory: userDeviceCategory,
         environment: userEnvironment,
         effectiveScores: processRawData.processEffectiveScores(formData, i),
       })
     );
   }
-
   const feedbackForm = new FeedbackForm(formEntries);
+  printer.printReleaseVersionObj(
+    convertData.generateFinalDataEffectScoreByVersion(
+      feedbackForm,
+      getListOfRelaseVersions(),
+      environments,
+      'environment'
+    ),
+    form.finalDataSheet,
+    ['Release Version', 'Overall', 'Indoor', 'Outdoor'],
+    0
+  );
 
-  // generateFinalDataEffectScoreByVersion()
-  const releaseVersions = ['1.0 (13)', '1.0 (14)'];
-  const environments = ['indoor', 'outdoor'];
+  let tableStartColumn = 7;
+  categories.forEach((category) => {
+    const listOfUniqueEntries = form.getAllValuesFor(category);
+
+    printer.printDistroTable(
+      convertData.generateScoresForCategory(
+        category,
+        listOfUniqueEntries,
+        ['1.0 (14)'],
+        artworks,
+        feedbackForm
+      ),
+      category,
+      form.finalDataSheet,
+      tableStartColumn
+    );
+    tableStartColumn += 6;
+  });
+
+  printer.printArtworkEffectiveScore(
+    convertData.generateFinalEffectiveScoreObjectFor(artworks, '1.0 (14)', feedbackForm),
+    form.finalDataSheet,
+    31
+  );
 
   printer.printReleaseVersionObj(
-    convertData.generateFinalDataEffectScoreByVersion(feedbackForm, releaseVersions, environments),
-    form.finalDataSheet
+    convertData.generateFinalDataEffectScoreByVersion(
+      feedbackForm,
+      ['1.0 (14)'],
+      deviceCategories,
+      'device'
+    ),
+    form.finalDataSheet,
+    ['Release Version', 'Low End (iPhone)', 'High End (iPhone)', 'Android'],
+    35
   );
 }
 

@@ -45,6 +45,21 @@ export function processEnvironmentData(data) {
   return env;
 }
 
+export function processDeviceCategoryData(data) {
+  const category = data.toLowerCase();
+  if (category.includes('low end')) {
+    return 'low end';
+  }
+  if (category.includes('high end')) {
+    return 'high end';
+  }
+  if (category.includes('android')) {
+    return 'android';
+  }
+
+  return 'other';
+}
+
 export function calculateEffectiveScore(rawData, idx, columnNumbers) {
   let cumScore = 0;
   for (let i = 0; i < columnNumbers.length; i++) {
