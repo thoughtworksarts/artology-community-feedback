@@ -1,16 +1,8 @@
 /* eslint-disable no-unused-expressions */
-function sumUpAvgScores(entries) {
+function sumUpAvgScoresFor(entries, artwork = false) {
   let score = 0;
   entries.forEach((entry) => {
-    score += entry.getAverageEffectiveScore();
-  });
-  return score;
-}
-
-function sumUpAvgArtworkScores(entries, artwork) {
-  let score = 0;
-  entries.forEach((entry) => {
-    score += entry.getAverageScoreFor(artwork);
+    score += entry.getAverageEffectiveScoreFor(artwork);
   });
   return score;
 }
@@ -54,13 +46,14 @@ export default class FeedbackForm {
     });
   }
 
-  getOverallEffectiveScoreFor(filterObject = {}) {
+  getOverallEffectiveScoreFor(artwork, filterObject = {}) {
     let { feedbackEntries } = this;
     Object.keys(filterObject).forEach((key) => {
       feedbackEntries = this.filterBy(feedbackEntries, key, filterObject[key]);
     });
+
     const denominator = feedbackEntries.length;
-    return denominator === 0 ? 0 : sumUpAvgScores(feedbackEntries) / denominator;
+    return denominator === 0 ? 0 : sumUpAvgScoresFor(feedbackEntries, artwork) / denominator;
   }
 
   getArtworkEffectiveScoreFor(artwork, filterObject = {}) {
@@ -70,7 +63,7 @@ export default class FeedbackForm {
     });
 
     const denominator = feedbackEntries.length;
-    return denominator === 0 ? 0 : sumUpAvgArtworkScores(feedbackEntries, artwork) / denominator;
+    return denominator === 0 ? 0 : sumUpAvgScoresFor(feedbackEntries, artwork) / denominator;
   }
 
   getArtworkInteractiveEffectiveScoreFor(artwork, filterObject = {}) {

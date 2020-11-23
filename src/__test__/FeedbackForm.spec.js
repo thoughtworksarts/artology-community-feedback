@@ -102,40 +102,42 @@ describe('FeedbackForm', () => {
 
     it('should get the overall Effective score for all feedback where region is united states', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
-      expect(feedbackForm.getOverallEffectiveScoreFor({ region: 'united states' })).toEqual(5.5);
+      expect(feedbackForm.getOverallEffectiveScoreFor(false, { region: 'united states' })).toEqual(
+        5.5
+      );
     });
 
     it('should get the overall Effective score for all feedback where gender is female', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
-      expect(feedbackForm.getOverallEffectiveScoreFor({ gender: 'female' })).toEqual(6);
+      expect(feedbackForm.getOverallEffectiveScoreFor(false, { gender: 'female' })).toEqual(6);
     });
 
     it('should get the overall Effective score for all feedback where skintone is option 4', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
-      expect(feedbackForm.getOverallEffectiveScoreFor({ skintone: 'option 4' })).toEqual(4);
+      expect(feedbackForm.getOverallEffectiveScoreFor(false, { skintone: 'option 4' })).toEqual(4);
     });
 
     it('should get the overall Effective score for all feedback where environment is indoor', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
-      expect(feedbackForm.getOverallEffectiveScoreFor({ environment: 'indoor' })).toEqual(6);
+      expect(feedbackForm.getOverallEffectiveScoreFor(false, { environment: 'indoor' })).toEqual(6);
     });
 
     it('should get the overall Effective score for all feedback where region is africa', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
-      expect(feedbackForm.getOverallEffectiveScoreFor({ region: 'africa' })).toEqual(0);
+      expect(feedbackForm.getOverallEffectiveScoreFor(false, { region: 'africa' })).toEqual(0);
     });
 
     it('should get the overall Effective score for feedback where version 1.0 (14) and country brazil', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(
-        feedbackForm.getOverallEffectiveScoreFor({ version: '1.0 (14)', region: 'brazil' })
+        feedbackForm.getOverallEffectiveScoreFor(false, { version: '1.0 (14)', region: 'brazil' })
       ).toEqual(4);
     });
 
     it('should get the overall Effective score for feedback where gender is female and environment is indoor', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(
-        feedbackForm.getOverallEffectiveScoreFor({
+        feedbackForm.getOverallEffectiveScoreFor(false, {
           gender: 'female',
           environment: 'indoor',
           region: 'brazil',
@@ -147,13 +149,13 @@ describe('FeedbackForm', () => {
   describe('getArtworkEffectiveScoreFor', () => {
     it('should get overall effective score for output', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
-      expect(feedbackForm.getArtworkEffectiveScoreFor('output')).toEqual(5);
+      expect(feedbackForm.getOverallEffectiveScoreFor('output')).toEqual(5);
     });
 
     it('should get overall effective score for output where version is 1.0 (14) and ethnicity is white, indoor', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(
-        feedbackForm.getArtworkEffectiveScoreFor('output', {
+        feedbackForm.getOverallEffectiveScoreFor('output', {
           version: '1.0 (14)',
           ethnicity: 'white',
         })
@@ -170,7 +172,7 @@ describe('FeedbackForm', () => {
     it('should get overall interactive effective score for output where version is 1.0 (14) and ethnicity is white, indoor', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(
-        feedbackForm.getArtworkEffectiveScoreFor('output', {
+        feedbackForm.getOverallEffectiveScoreFor('output', {
           version: '1.0 (14)',
           ethnicity: 'white',
         })

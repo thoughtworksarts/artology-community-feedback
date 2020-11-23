@@ -20,21 +20,14 @@ export default class FeedbackEntry {
     this.effectiveScores = effectiveScores;
   }
 
-  getAverageEffectiveScore() {
+  getAverageEffectiveScoreFor(artwork = false) {
     let cumScore = 0;
     let count = 0;
     this.effectiveScores.forEach((effectiveScore) => {
-      cumScore += effectiveScore.getScore();
-      count++;
-    });
-    return cumScore / count;
-  }
-
-  getAverageScoreFor(artwork) {
-    let cumScore = 0;
-    let count = 0;
-    this.effectiveScores.forEach((effectiveScore) => {
-      if (effectiveScore.getArtwork() === artwork) {
+      if (!artwork) {
+        cumScore += effectiveScore.getScore();
+        count++;
+      } else if (effectiveScore.getArtwork() === artwork) {
         cumScore += effectiveScore.getScore();
         count++;
       }

@@ -31,23 +31,23 @@ describe('FeedbackEntry', () => {
 
   it('should get the average score for a feedback entry', () => {
     const feedbackEntry = new FeedbackEntry(data);
-    expect(feedbackEntry.getAverageEffectiveScore()).toEqual(3.125);
+    expect(feedbackEntry.getAverageEffectiveScoreFor()).toEqual(3.125);
   });
 
-  describe('getAverageScoreFor', () => {
+  describe('getAverageEffectiveScoreFor', () => {
     it('should get the average score for afl for a feedback entry', () => {
       const feedbackEntry = new FeedbackEntry(data);
-      expect(feedbackEntry.getAverageScoreFor('afl')).toEqual(4);
+      expect(feedbackEntry.getAverageEffectiveScoreFor('afl')).toEqual(4);
     });
 
     it('should get the average score for output for a feedback entry', () => {
       const feedbackEntry = new FeedbackEntry(data);
-      expect(feedbackEntry.getAverageScoreFor('output')).toEqual(2.5);
+      expect(feedbackEntry.getAverageEffectiveScoreFor('output')).toEqual(2.5);
     });
 
     it('should get the average score for pio for a feedback entry', () => {
       const feedbackEntry = new FeedbackEntry(data);
-      expect(feedbackEntry.getAverageScoreFor('pio')).toEqual(3);
+      expect(feedbackEntry.getAverageEffectiveScoreFor('pio')).toEqual(3);
     });
   });
 
