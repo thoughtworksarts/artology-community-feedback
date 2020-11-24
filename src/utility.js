@@ -2,20 +2,12 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable import/prefer-default-export */
 
-export function calculateAverages(cumScores, denominator) {
-  return cumScores.map((score) => score / denominator);
-}
-
 export function covertEmptyCellToZero(value) {
   if (value != '') {
     return value;
   }
 
   return 0;
-}
-
-export function isUsage(usageType, data, row, column) {
-  return data[row][column].includes(`${usageType}`);
 }
 
 export function isValidReleaseVersion(version) {
@@ -58,13 +50,4 @@ export function processDeviceCategoryData(data) {
   }
 
   return 'other';
-}
-
-export function calculateEffectiveScore(rawData, idx, columnNumbers) {
-  let cumScore = 0;
-  for (let i = 0; i < columnNumbers.length; i++) {
-    cumScore += rawData[idx][columnNumbers[i]];
-  }
-
-  return cumScore / columnNumbers.length;
 }

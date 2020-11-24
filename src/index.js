@@ -1,11 +1,11 @@
 /* eslint-disable no-plusplus */
 import * as utility from './utility';
-import { formData, lastRow, getListOfRelaseVersions } from './spreadSheet';
-import * as init from './spreadSheet';
+import { formData, lastRow, getListOfRelaseVersions } from './init';
+import * as init from './init';
 import FeedbackEntry from './components/FeedBackEntry';
 import FeedbackForm from './components/FeedbackForm';
 import * as convertData from './dataPorcessors/outgoingData';
-import * as printer from './printer';
+import * as printer from './helpers/printer';
 import * as incomingData from './dataPorcessors/incomingData';
 import { artworks, environments, categories, deviceCategories } from './config';
 import * as form from './config';
@@ -42,6 +42,7 @@ function getFormEntries() {
 }
 
 export default function main() {
+  const latestRelease = init.getLatestRelease();
   // Get all user entries
   const formEntries = getFormEntries();
 
@@ -69,7 +70,7 @@ export default function main() {
       convertData.generateScoresForCategory(
         category,
         listOfUniqueEntries,
-        ['1.0 (14)'],
+        [latestRelease],
         artworks,
         feedbackForm
       ),
@@ -81,7 +82,7 @@ export default function main() {
   });
 
   printer.printEffectiveScorePerArtworkTable(
-    convertData.generateArtworkEffectiveScores(artworks, '1.0 (14)', feedbackForm),
+    convertData.generateArtworkEffectiveScores(artworks, latestRelease, feedbackForm),
     init.finalDataSheet,
     31,
     'Average Effective Score'
@@ -90,7 +91,7 @@ export default function main() {
   printer.printEffectiveScorePerReleaseTable(
     convertData.generateEffectScorePerReleaseData(
       feedbackForm,
-      ['1.0 (14)'],
+      [latestRelease],
       deviceCategories,
       'device'
     ),
@@ -100,7 +101,7 @@ export default function main() {
   );
 
   printer.printEffectiveScorePerArtworkTable(
-    convertData.generateArtworkEffectiveScores(artworks, '1.0 (14)', feedbackForm, true),
+    convertData.generateArtworkEffectiveScores(artworks, latestRelease, feedbackForm, true),
     init.finalDataSheet,
     41,
     'Interactive Portion Effective Score'

@@ -1,5 +1,6 @@
 /* eslint-disable no-plusplus */
 import { APP_RELEASE_VERSIONS, FINAL_DATA, FORM_RESPONSE_1 } from './constants';
+import { isValidReleaseVersion } from './utility';
 import * as form from './config';
 import { onOpen } from './helpers/menu';
 
@@ -48,6 +49,16 @@ export function getAllValuesFor(category) {
   }
 
   return items;
+}
+
+export function getLatestRelease() {
+  const data = finalDataSheet.getRange(1, 1, 1, 2).getValues();
+  let input = data[0][1];
+  while (!isValidReleaseVersion(input)) {
+    input = ui.prompt('Input current app release number (ex: 1.0 (13) )').getResponseText();
+  }
+  finalDataSheet.getRange(1, 2).setValue(input);
+  return input;
 }
 
 onOpen(ui);
