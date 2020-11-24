@@ -1,7 +1,7 @@
 /* eslint-disable dot-notation */
 /* eslint-disable object-shorthand */
 /* eslint-disable import/prefer-default-export */
-export function generateFinalDataEffectScoreByVersion(
+export function generateEffectScorePerReleaseData(
   feedbackForm,
   releaseVersions,
   environments,
@@ -57,7 +57,7 @@ export function generateScoresForCategory(
   return obj;
 }
 
-export function generateEffectiveScoreObjectFor(
+export function generateArtworkEffectiveScores(
   artworks,
   releaseVersion,
   feedbackForm,

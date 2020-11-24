@@ -1,7 +1,12 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable import/prefer-default-export */
 
-export function printReleaseVersionObj(object, finalDataSheet, columnTitles, startTableColumn) {
+export function printEffectiveScorePerReleaseTable(
+  object,
+  finalDataSheet,
+  columnTitles,
+  startTableColumn
+) {
   // Print Column columnTitles
   columnTitles.forEach((header, index) =>
     finalDataSheet.getRange(2, index + startTableColumn + 1).setValue(header)
@@ -46,28 +51,17 @@ export function printDistroTable(object, category, finalDataSheet, startTableCol
   });
 }
 
-export function printArtworkEffectiveScore(object, finalDataSheet, startTableColumn, columnTitle) {
+export function printEffectiveScorePerArtworkTable(
+  object,
+  finalDataSheet,
+  startTableColumn,
+  columnTitle
+) {
   finalDataSheet.getRange(2, startTableColumn + 1).setValue(columnTitle);
   Object.keys(object).forEach((key, idx) => {
     // Set column Header
     finalDataSheet.getRange(idx + 3, startTableColumn).setValue(key.toUpperCase());
     // Fill in column Data
     finalDataSheet.getRange(idx + 3, startTableColumn + 1).setValue(object[key]);
-  });
-}
-
-export function printInteractiveExpTable(object, finalDataSheet, latestRelease) {
-  // Set column Name
-  finalDataSheet.getRange(2, 42).setValue('Interactive Portion Effective Score');
-  Object.keys(object[latestRelease]).forEach((artwork, index) => {
-    // Set row names
-    finalDataSheet.getRange(index + 3, 41).setValue(artwork.toUpperCase());
-    // Fill in data
-    finalDataSheet
-      .getRange(index + 3, 42)
-      .setValue(
-        object[latestRelease][artwork].interactive.cumAvg /
-          object[latestRelease][artwork].interactive.count
-      );
   });
 }

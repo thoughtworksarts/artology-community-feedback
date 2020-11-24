@@ -49,8 +49,8 @@ export default function main() {
   const feedbackForm = new FeedbackForm(formEntries);
 
   // Print tables to spreadsheet
-  printer.printReleaseVersionObj(
-    convertData.generateFinalDataEffectScoreByVersion(
+  printer.printEffectiveScorePerReleaseTable(
+    convertData.generateEffectScorePerReleaseData(
       feedbackForm,
       getListOfRelaseVersions(),
       environments,
@@ -80,15 +80,15 @@ export default function main() {
     tableStartColumn += 6;
   });
 
-  printer.printArtworkEffectiveScore(
-    convertData.generateEffectiveScoreObjectFor(artworks, '1.0 (14)', feedbackForm),
+  printer.printEffectiveScorePerArtworkTable(
+    convertData.generateArtworkEffectiveScores(artworks, '1.0 (14)', feedbackForm),
     init.finalDataSheet,
     31,
     'Average Effective Score'
   );
 
-  printer.printReleaseVersionObj(
-    convertData.generateFinalDataEffectScoreByVersion(
+  printer.printEffectiveScorePerReleaseTable(
+    convertData.generateEffectScorePerReleaseData(
       feedbackForm,
       ['1.0 (14)'],
       deviceCategories,
@@ -99,8 +99,8 @@ export default function main() {
     35
   );
 
-  printer.printArtworkEffectiveScore(
-    convertData.generateEffectiveScoreObjectFor(artworks, '1.0 (14)', feedbackForm, true),
+  printer.printEffectiveScorePerArtworkTable(
+    convertData.generateArtworkEffectiveScores(artworks, '1.0 (14)', feedbackForm, true),
     init.finalDataSheet,
     41,
     'Interactive Portion Effective Score'
