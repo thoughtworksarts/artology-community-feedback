@@ -2,41 +2,32 @@
 import * as utility from './utility';
 import { formData, lastRow, getListOfRelaseVersions } from './init';
 import * as init from './init';
-import FeedbackEntry from './components/FeedBackEntry';
 import FeedbackForm from './components/FeedbackForm';
 import * as convertData from './dataPorcessors/outgoingData';
 import * as printer from './helpers/printer';
-import * as incomingData from './dataPorcessors/incomingData';
 import { artworks, environments, categories, deviceCategories } from './config';
 import * as form from './config';
+import { handleMultipleSections } from './helpers/multipleSelection';
 
 // eslint-disable-next-line no-unused-vars
-
 function getFormEntries() {
   const formEntries = [];
   for (let i = 1; i < lastRow; i++) {
-    const appVersion = formData[i][form.releaseVersionColumn];
-    const userCountry = formData[i][form.regionColumn].toLowerCase();
-    const usergender = utility.processGenderData(formData[i][form.genderColumn]);
-    const userEthnicity = formData[i][form.ethnicityColumn].toLowerCase();
-    const userSkintone = formData[i][form.skintoneColumn].toLowerCase();
-    const userDeviceCategory = utility.processDeviceCategoryData(
-      formData[i][form.deviceCategoryColumn]
-    );
-    const userEnvironment = utility.processEnvironmentData(formData[i][form.usageTypeColumn]);
-    // eslint-disable-next-line object-shorthand
-    formEntries.push(
-      new FeedbackEntry({
-        version: appVersion,
-        country: userCountry,
-        gender: usergender,
-        ethnicity: userEthnicity,
-        skintone: userSkintone,
-        deviceCategory: userDeviceCategory,
-        environment: userEnvironment,
-        effectiveScores: incomingData.processEffectiveScores(formData, i),
-      })
-    );
+    const intialData = {
+      appVersion: formData[i][form.releaseVersionColumn],
+      userCountry: formData[i][form.regionColumn].toLowerCase(),
+      usergender: utility.processGenderData(formData[i][form.genderColumn]),
+      userEthnicitys: utility.handleMultipleSelections(
+        formData[i][form.ethnicityColumn].toLowerCase()
+      ),
+      userSkintones: utility.handleMultipleSelections(
+        formData[i][form.skintoneColumn].toLowerCase()
+      ),
+      userDeviceCategory: utility.processDeviceCategoryData(formData[i][form.deviceCategoryColumn]),
+      userEnvironment: utility.processEnvironmentData(formData[i][form.usageTypeColumn]),
+    };
+
+    handleMultipleSections(intialData, formData, i).forEach((entry) => formEntries.push(entry));
   }
   return formEntries;
 }
@@ -58,13 +49,13 @@ export default function main() {
       'environment'
     ),
     init.finalDataSheet,
-    ['Release Version', 'Overall', 'Indoor', 'Outdoor'],
+    ['Release Version', 'Overall', 'Indoor', 'Outdoor', 'Other'],
     0
   );
 
   let tableStartColumn = 7;
   categories.forEach((category) => {
-    const listOfUniqueEntries = init.getAllValuesFor(category);
+    const listOfUniqueEntries = init.getAllEntriesFor(category);
 
     printer.printDistroTable(
       convertData.generateScoresForCategory(
@@ -96,7 +87,7 @@ export default function main() {
       'device'
     ),
     init.finalDataSheet,
-    ['Release Version', 'Low End (iPhone)', 'High End (iPhone)', 'Android'],
+    ['Release Version', 'Low End (iPhone)', 'High End (iPhone)', 'Android', 'Other'],
     35
   );
 

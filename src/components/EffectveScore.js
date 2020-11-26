@@ -15,6 +15,6 @@ export default class EffectiveScore {
   }
 
   getScore() {
-    return parseInt(this.score);
+    return this.score !== '' ? parseInt(this.score) : '';
   }
 }

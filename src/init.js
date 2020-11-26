@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 import { APP_RELEASE_VERSIONS, FINAL_DATA, FORM_RESPONSE_1 } from './constants';
-import { isValidReleaseVersion } from './utility';
+import { isValidReleaseVersion, handleMultipleSelections } from './utility';
 import * as form from './config';
 import { onOpen } from './helpers/menu';
 
@@ -39,16 +39,35 @@ const categories = {
 };
 
 export function getAllValuesFor(category) {
-  const items = [];
+  const items = [''];
   const columnNumber = categories[category];
   for (let i = 1; i < lastRow; i++) {
-    const value = formData[i][columnNumber].toLowerCase();
-    if (!items.includes(value)) {
-      items.push(value);
-    }
+    const values = handleMultipleSelections(formData[i][columnNumber].toLowerCase());
+    values.forEach((value) => {
+      if (!items.includes(value)) {
+        items.push(value);
+      }
+    });
   }
 
   return items;
+}
+
+const entries = {
+  regions: (category) => {
+    return getAllValuesFor(category);
+  },
+  gender: ['male', 'female', 'non-binary', 'other', ''],
+  skintone: (category) => {
+    return getAllValuesFor(category);
+  },
+  ethnicity: (category) => {
+    return getAllValuesFor(category);
+  },
+};
+
+export function getAllEntriesFor(category) {
+  return category === 'gender' ? entries[category] : entries[category](category);
 }
 
 export function getLatestRelease() {

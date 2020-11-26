@@ -17,11 +17,12 @@ export function isValidReleaseVersion(version) {
 
 export function processGenderData(data) {
   const gender = data.toLowerCase();
-  if (gender === 'male' || gender === 'female' || gender === 'non-binary') {
-    return gender;
+
+  if (!(gender === 'male' || gender === 'female' || gender === 'non-binary' || gender === '')) {
+    return 'other';
   }
 
-  return 'other';
+  return gender;
 }
 
 export function processEnvironmentData(data) {
@@ -50,4 +51,13 @@ export function processDeviceCategoryData(data) {
   }
 
   return 'other';
+}
+
+export function handleMultipleSelections(data) {
+  const regExp = new RegExp(',\\s', 'gi');
+  return data.split(regExp);
+}
+
+export function moduloWhenOdd(num1, num2) {
+  return num1 > num2 ? num1 % num2 : num1;
 }

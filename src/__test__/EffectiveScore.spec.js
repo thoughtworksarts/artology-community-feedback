@@ -15,7 +15,7 @@ describe('EffectiveScore', () => {
     expect(anotherEffectiveScore.getArtwork()).toEqual('pio');
   });
 
-  it('should return true if score was submited for an Interactive portion', () => {
+  it('should return true only if score was submited for an Interactive portion', () => {
     expect(effectiveScore.isInteractive()).toBe(true);
     expect(anotherEffectiveScore.isInteractive()).toBe(false);
   });

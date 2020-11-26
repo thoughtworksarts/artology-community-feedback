@@ -1,3 +1,6 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable prettier/prettier */
+/* eslint-disable eqeqeq */
 /* eslint-disable no-plusplus */
 export default class FeedbackEntry {
   constructor({
@@ -24,27 +27,31 @@ export default class FeedbackEntry {
     let cumScore = 0;
     let count = 0;
     this.effectiveScores.forEach((effectiveScore) => {
-      if (!artwork) {
+      if (!artwork && !effectiveScore.getScore() == '') {
         cumScore += effectiveScore.getScore();
         count++;
-      } else if (effectiveScore.getArtwork() === artwork) {
+      } else if (effectiveScore.getArtwork() === artwork && !(effectiveScore.getScore() == '')) {
         cumScore += effectiveScore.getScore();
         count++;
       }
     });
-    return cumScore / count;
+    return count === 0 ? { avgScore: 'N/A', count: 0 } : { avgScore: cumScore / count, count: 1};
   }
 
   getAverageInteractiveScoreFor(artwork) {
     let cumScore = 0;
     let count = 0;
     this.effectiveScores.forEach((effectiveScore) => {
-      if (effectiveScore.getArtwork() === artwork && effectiveScore.isInteractive()) {
+      if (
+        effectiveScore.getArtwork() === artwork &&
+        effectiveScore.isInteractive() &&
+        !(effectiveScore.getScore() === '')
+      ) {
         cumScore += effectiveScore.getScore();
         count++;
       }
     });
-    return count === 0 ? cumScore : cumScore / count;
+    return count === 0 ? { avgScore: 'N/A', count: 0 } : { avgScore: cumScore / count, count: 1};
   }
 
   getCountry() {

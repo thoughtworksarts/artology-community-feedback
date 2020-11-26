@@ -1,10 +1,13 @@
 /* eslint-disable no-undef */
 import FeedbackForm from '../components/FeedbackForm';
 import EffectiveScore from '../components/EffectveScore';
-import FeedbackEntry from '../components/FeedBackEntry';
+import FeedbackEntry from '../components/FeedbackEntry';
 
 describe('FeedbackForm', () => {
-  let feedbackEntries;
+  let data1;
+  let data2;
+  let data3;
+  let data4;
 
   beforeEach(() => {
     // avg: 3
@@ -28,7 +31,7 @@ describe('FeedbackForm', () => {
       new EffectiveScore('10', 'afl', false),
     ];
 
-    const data1 = {
+    data1 = {
       version: '1.0 (14)',
       country: 'united states',
       gender: 'male',
@@ -39,7 +42,7 @@ describe('FeedbackForm', () => {
       effectiveScores: effectiveScores1,
     };
 
-    const data2 = {
+    data2 = {
       version: '1.0 (14)',
       country: 'brazil',
       gender: 'female',
@@ -50,7 +53,7 @@ describe('FeedbackForm', () => {
       effectiveScores: effectiveScores2,
     };
 
-    const data3 = {
+    data3 = {
       version: '1.0 (13)',
       country: 'united states',
       gender: 'female',
@@ -61,14 +64,23 @@ describe('FeedbackForm', () => {
       effectiveScores: effectiveScores3,
     };
 
-    feedbackEntries = [
-      new FeedbackEntry(data1),
-      new FeedbackEntry(data2),
-      new FeedbackEntry(data3),
-    ];
+    // feedbackEntries = [
+    //   new FeedbackEntry(data1),
+    //   new FeedbackEntry(data2),
+    //   new FeedbackEntry(data3),
+    // ];
   });
 
   describe('filterBy', () => {
+    let feedbackEntries;
+    beforeEach(() => {
+      feedbackEntries = [
+        new FeedbackEntry(data1),
+        new FeedbackEntry(data2),
+        new FeedbackEntry(data3),
+      ];
+    });
+
     it('should filter by region', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(feedbackForm.filterBy(feedbackEntries, 'region', 'united states').length).toEqual(2);
@@ -95,6 +107,15 @@ describe('FeedbackForm', () => {
   });
 
   describe('getOverallEffectiveScoreFor', () => {
+    let feedbackEntries;
+    beforeEach(() => {
+      feedbackEntries = [
+        new FeedbackEntry(data1),
+        new FeedbackEntry(data2),
+        new FeedbackEntry(data3),
+      ];
+    });
+
     it('should get the overall Effective score for all feedbacks (unfiltered form)', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(feedbackForm.getOverallEffectiveScoreFor()).toEqual(5);
@@ -124,7 +145,7 @@ describe('FeedbackForm', () => {
 
     it('should get the overall Effective score for all feedback where region is africa', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
-      expect(feedbackForm.getOverallEffectiveScoreFor(false, { region: 'africa' })).toEqual(0);
+      expect(feedbackForm.getOverallEffectiveScoreFor(false, { region: 'africa' })).toEqual('N/A');
     });
 
     it('should get the overall Effective score for feedback where version 1.0 (14) and country brazil', () => {
@@ -144,9 +165,42 @@ describe('FeedbackForm', () => {
         })
       ).toEqual(4);
     });
+
+    it('an empty score for an entry should not impact the overall effective score for the entire form', () => {
+      const scores = [
+        new EffectiveScore('', 'afl', true),
+        new EffectiveScore('9', 'output', true),
+        new EffectiveScore('', 'pio', true),
+      ];
+
+      data4 = {
+        version: '1.0 (13)',
+        country: 'united states',
+        gender: 'female',
+        ethnicity: 'white',
+        skintone: 'option 3',
+        deviceCategory: 'low end',
+        environment: 'indoor',
+        effectiveScores: scores,
+      };
+      const newEntry = new FeedbackEntry(data4);
+      feedbackEntries.push(newEntry);
+      const feedbackForm = new FeedbackForm(feedbackEntries);
+      expect(feedbackForm.getOverallEffectiveScoreFor()).toEqual(6);
+    });
   });
 
   describe('getArtworkEffectiveScoreFor', () => {
+    let feedbackEntries;
+
+    beforeEach(() => {
+      feedbackEntries = [
+        new FeedbackEntry(data1),
+        new FeedbackEntry(data2),
+        new FeedbackEntry(data3),
+      ];
+    });
+
     it('should get overall effective score for output', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(feedbackForm.getOverallEffectiveScoreFor('output')).toEqual(5);
@@ -164,6 +218,34 @@ describe('FeedbackForm', () => {
   });
 
   describe('getArtworkInteractvieEffectiveScoreFor', () => {
+    let feedbackEntries;
+
+    beforeEach(() => {
+      const scores = [
+        new EffectiveScore('', 'afl', true),
+        new EffectiveScore('', 'output', true),
+        new EffectiveScore('', 'pio', true),
+      ];
+
+      data4 = {
+        version: '1.0 (14)',
+        country: 'united states',
+        gender: 'female',
+        ethnicity: 'white',
+        skintone: 'option 3',
+        deviceCategory: 'low end',
+        environment: 'indoor',
+        effectiveScores: scores,
+      };
+
+      feedbackEntries = [
+        new FeedbackEntry(data1),
+        new FeedbackEntry(data2),
+        new FeedbackEntry(data3),
+        new FeedbackEntry(data4),
+      ];
+    });
+
     it('should get Overal Interactive effective score for output', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(feedbackForm.getArtworkInteractiveEffectiveScoreFor('output')).toEqual(5);
