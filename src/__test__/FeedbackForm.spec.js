@@ -145,7 +145,7 @@ describe('FeedbackForm', () => {
 
     it('should get the overall Effective score for all feedback where region is africa', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
-      expect(feedbackForm.getOverallEffectiveScoreFor(false, { region: 'africa' })).toEqual('N/A');
+      expect(feedbackForm.getOverallEffectiveScoreFor(false, { region: 'africa' })).toEqual(0);
     });
 
     it('should get the overall Effective score for feedback where version 1.0 (14) and country brazil', () => {

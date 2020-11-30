@@ -35,6 +35,15 @@ export function processEffectiveScores(data, idx) {
           isInteractive
         )
       );
+    } else if (form.spEffectiveScoreColumns.includes(columnNumber)) {
+      const isInteractive = form.spInteractiveExperienceColumns.includes(columnNumber);
+      scores.push(
+        new EffectiveScore(
+          utility.convertEmptyCellToZero(data[idx][columnNumber]),
+          'sp',
+          isInteractive
+        )
+      );
     } else {
       scores.push(
         new EffectiveScore(
