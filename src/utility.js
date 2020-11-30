@@ -2,7 +2,7 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable import/prefer-default-export */
 
-export function covertEmptyCellToZero(value) {
+export function convertEmptyCellToZero(value) {
   if (value != '') {
     return value;
   }

@@ -12,7 +12,7 @@ export function processEffectiveScores(data, idx) {
       const isInteractive = form.aflInteractiveExperienceColumns.includes(columnNumber);
       scores.push(
         new EffectiveScore(
-          utility.covertEmptyCellToZero(data[idx][columnNumber]),
+          utility.convertEmptyCellToZero(data[idx][columnNumber]),
           'afl',
           isInteractive
         )
@@ -21,7 +21,7 @@ export function processEffectiveScores(data, idx) {
       const isInteractive = form.outputInteractiveExperienceColumns.includes(columnNumber);
       scores.push(
         new EffectiveScore(
-          utility.covertEmptyCellToZero(data[idx][columnNumber]),
+          utility.convertEmptyCellToZero(data[idx][columnNumber]),
           'output',
           isInteractive
         )
@@ -30,14 +30,18 @@ export function processEffectiveScores(data, idx) {
       const isInteractive = form.pioInteractiveExperienceColumns.includes(columnNumber);
       scores.push(
         new EffectiveScore(
-          utility.covertEmptyCellToZero(data[idx][columnNumber]),
+          utility.convertEmptyCellToZero(data[idx][columnNumber]),
           'pio',
           isInteractive
         )
       );
     } else {
       scores.push(
-        new EffectiveScore(utility.covertEmptyCellToZero(data[idx][columnNumber]), 'general', false)
+        new EffectiveScore(
+          utility.convertEmptyCellToZero(data[idx][columnNumber]),
+          'general',
+          false
+        )
       );
     }
   }

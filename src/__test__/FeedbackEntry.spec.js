@@ -32,9 +32,9 @@ describe('FeedbackEntry', () => {
   describe('getAverageEffectiveScoreFor', () => {
     it("should get a single entry's overall average Effective score", () => {
       const feedbackEntry = new FeedbackEntry(data);
-      const { avgScore, count } = feedbackEntry.getAverageEffectiveScoreFor();
+      const { avgScore, countEntry } = feedbackEntry.getAverageEffectiveScoreFor();
       expect(avgScore).toEqual(3.125);
-      expect(count).toEqual(1);
+      expect(countEntry).toEqual(true);
     });
 
     it('should not include an empty score in overall average score calculation', () => {
@@ -59,25 +59,31 @@ describe('FeedbackEntry', () => {
       };
 
       const entry = new FeedbackEntry(entryData);
-      expect(entry.getAverageEffectiveScoreFor()).toEqual({ avgScore: 4, count: 1 });
+      expect(entry.getAverageEffectiveScoreFor()).toEqual({ avgScore: 4, countEntry: true });
     });
 
     it('should get the average score for afl', () => {
       const feedbackEntry = new FeedbackEntry(data);
-      expect(feedbackEntry.getAverageEffectiveScoreFor('afl')).toEqual({ avgScore: 4, count: 1 });
+      expect(feedbackEntry.getAverageEffectiveScoreFor('afl')).toEqual({
+        avgScore: 4,
+        countEntry: true,
+      });
     });
 
     it('should get the average score for output', () => {
       const feedbackEntry = new FeedbackEntry(data);
       expect(feedbackEntry.getAverageEffectiveScoreFor('output')).toEqual({
         avgScore: 2.5,
-        count: 1,
+        countEntry: true,
       });
     });
 
     it('should get the average score for pio', () => {
       const feedbackEntry = new FeedbackEntry(data);
-      expect(feedbackEntry.getAverageEffectiveScoreFor('pio')).toEqual({ avgScore: 3, count: 1 });
+      expect(feedbackEntry.getAverageEffectiveScoreFor('pio')).toEqual({
+        avgScore: 3,
+        countEntry: true,
+      });
     });
 
     it('should not include an empty score in calculation of artwork average Effective score', () => {
@@ -106,14 +112,17 @@ describe('FeedbackEntry', () => {
       };
 
       const feedbackEntry = new FeedbackEntry(entryData);
-      expect(feedbackEntry.getAverageEffectiveScoreFor('afl')).toEqual({ avgScore: 3.5, count: 1 });
+      expect(feedbackEntry.getAverageEffectiveScoreFor('afl')).toEqual({
+        avgScore: 3.5,
+        countEntry: true,
+      });
       expect(feedbackEntry.getAverageEffectiveScoreFor('output')).toEqual({
         avgScore: 5,
-        count: 1,
+        countEntry: true,
       });
       expect(feedbackEntry.getAverageEffectiveScoreFor('pio')).toEqual({
-        avgScore: 'N/A',
-        count: 0,
+        avgScore: 0,
+        countEntry: false,
       });
     });
   });
@@ -121,22 +130,25 @@ describe('FeedbackEntry', () => {
   describe('getAverageInteractiveScoreFor', () => {
     it('should get the average Interactive score for afl', () => {
       const feedbackEntry = new FeedbackEntry(data);
-      expect(feedbackEntry.getAverageInteractiveScoreFor('afl')).toEqual({ avgScore: 5, count: 1 });
+      expect(feedbackEntry.getAverageInteractiveScoreFor('afl')).toEqual({
+        avgScore: 5,
+        countEntry: true,
+      });
     });
 
     it('should get the average Interactive score for output', () => {
       const feedbackEntry = new FeedbackEntry(data);
       expect(feedbackEntry.getAverageInteractiveScoreFor('output')).toEqual({
         avgScore: 2,
-        count: 1,
+        countEntry: true,
       });
     });
 
     it('should get the average Interactive score for pio', () => {
       const feedbackEntry = new FeedbackEntry(data);
       expect(feedbackEntry.getAverageInteractiveScoreFor('pio')).toEqual({
-        avgScore: 'N/A',
-        count: 0,
+        avgScore: 0,
+        countEntry: false,
       });
     });
 
@@ -168,15 +180,15 @@ describe('FeedbackEntry', () => {
       const feedbackEntry = new FeedbackEntry(entryData);
       expect(feedbackEntry.getAverageInteractiveScoreFor('afl')).toEqual({
         avgScore: 3.5,
-        count: 1,
+        countEntry: true,
       });
       expect(feedbackEntry.getAverageInteractiveScoreFor('output')).toEqual({
         avgScore: 5,
-        count: 1,
+        countEntry: true,
       });
       expect(feedbackEntry.getAverageInteractiveScoreFor('pio')).toEqual({
-        avgScore: 'N/A',
-        count: 0,
+        avgScore: 0,
+        countEntry: false,
       });
     });
   });

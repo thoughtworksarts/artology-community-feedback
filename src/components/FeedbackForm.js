@@ -3,10 +3,10 @@ function sumUpAvgScoresFor(entries, artwork = false) {
   let score = 0;
   let counter = 0;
   entries.forEach((entry) => {
-    const { avgScore, count } = entry.getAverageEffectiveScoreFor(artwork);
-    if (count !== 0) {
+    const { avgScore, countEntry } = entry.getAverageEffectiveScoreFor(artwork);
+    if (countEntry) {
       score += avgScore;
-      counter += count;
+      counter += countEntry;
     }
   });
   return { score, counter };
@@ -16,10 +16,10 @@ function sumUpAvgInteractiveArtworkScores(entries, artwork) {
   let score = 0;
   let counter = 0;
   entries.forEach((entry) => {
-    const { avgScore, count } = entry.getAverageInteractiveScoreFor(artwork);
-    if (count !== 0) {
+    const { avgScore, countEntry } = entry.getAverageInteractiveScoreFor(artwork);
+    if (countEntry) {
       score += avgScore;
-      counter += count;
+      counter += countEntry;
     }
   });
   return { score, counter };
@@ -63,7 +63,7 @@ export default class FeedbackForm {
     });
 
     const { score, counter } = sumUpAvgScoresFor(feedbackEntries, artwork);
-    return counter === 0 ? 'N/A' : score / counter;
+    return counter === 0 ? 0 : score / counter;
   }
 
   getArtworkInteractiveEffectiveScoreFor(artwork, filterObject = {}) {
@@ -72,6 +72,6 @@ export default class FeedbackForm {
       feedbackEntries = this.filterBy(feedbackEntries, key, filterObject[key]);
     });
     const { score, counter } = sumUpAvgInteractiveArtworkScores(feedbackEntries, artwork);
-    return counter === 0 ? 'N/A' : score / counter;
+    return counter === 0 ? 0 : score / counter;
   }
 }

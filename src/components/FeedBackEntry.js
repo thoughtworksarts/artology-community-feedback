@@ -35,7 +35,7 @@ export default class FeedbackEntry {
         count++;
       }
     });
-    return count === 0 ? { avgScore: 'N/A', count: 0 } : { avgScore: cumScore / count, count: 1};
+    return count === 0 ? { avgScore: 0, countEntry: false } : { avgScore: cumScore / count, countEntry: true};
   }
 
   getAverageInteractiveScoreFor(artwork) {
@@ -51,7 +51,7 @@ export default class FeedbackEntry {
         count++;
       }
     });
-    return count === 0 ? { avgScore: 'N/A', count: 0 } : { avgScore: cumScore / count, count: 1};
+    return count === 0 ? { avgScore: 0, countEntry: false } : { avgScore: cumScore / count, countEntry: true};
   }
 
   getCountry() {
