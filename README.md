@@ -27,7 +27,7 @@ A browser window will appear prompting you to login to your gmail account. Make 
 
 Enable your Google App Script API [here](https://script.google.com/home/usersettings)
 
-### Access Script
+### Access To The Script
 
 Clone the [artology-community-feedback](https://github.com/thoughtworksarts/artology-community-feedback) repo to your local machine and run `npm i` to install dependencies.
 
