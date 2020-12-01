@@ -23,6 +23,15 @@ clasp login
 
 A browser window will appear prompting you to login to your gmail account. Make sure you login to your TW account.
 
-## Enable Google App Script API
+### Enable Google App Script API
 
 Enable your Google App Script API [here](https://script.google.com/home/usersettings)
+
+### Access Script
+
+Clone the [artology-community-feedback](https://github.com/thoughtworksarts/artology-community-feedback) repo to your local machine and run `npm i` to install dependencies.
+
+## Deploying To The Cloud
+
+In the root directory of the project run:
+`npm run deploy`
