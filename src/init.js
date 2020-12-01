@@ -80,4 +80,4 @@ export function getLatestRelease() {
   return input;
 }
 
-onOpen(ui);
+onOpen();
