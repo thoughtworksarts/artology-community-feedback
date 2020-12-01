@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-Visual Studio Code
-npm
+- Visual Studio Code
+- npm
 
 ## Setup Clasp
 
