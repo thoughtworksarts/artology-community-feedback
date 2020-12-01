@@ -5,9 +5,9 @@
 Visual Studio Code
 npm
 
-## Clasp
+## Setup Clasp
 
-We are using clasp to connect to our google app script file in the cloud. Clasp allows us to pull our script to our local machine for development. To install clasp on your machine run:
+We are using clasp to connect to our google app script file in the cloud. Clasp allows us to push/pull our script to/from the cloud from our local machine. To install clasp run:
 
 ```
 npm i @google/clasp -g
@@ -25,4 +25,4 @@ A browser window will appear prompting you to login to your gmail account. Make 
 
 ## Enable Google App Script API
 
-Enable your Google App Script API [here]('https://script.google.com/home/usersettings')
+Enable your Google App Script API [here](https://script.google.com/home/usersettings)
