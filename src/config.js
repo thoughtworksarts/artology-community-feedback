@@ -1,7 +1,7 @@
 export const artworks = {
   afl: "A Father's Lullaby",
   output: 'Output',
-  pio: 'Perception I/O',
+  pio: 'PerceptionIO',
   sp: 'Seismic Percussion',
 };
 export const environments = ['indoor', 'outdoor', 'other'];
