@@ -1,14 +1,12 @@
-export const artworks = ['afl', 'output', 'pio', 'sp'];
+export const artworks = {
+  afl: "A Father's Lullaby",
+  output: 'Output',
+  pio: 'Perception I/O',
+  sp: 'Seismic Percussion',
+};
 export const environments = ['indoor', 'outdoor', 'other'];
 export const categories = ['regions', 'gender', 'skintone', 'ethnicity'];
 export const deviceCategories = ['low end', 'high end', 'android', 'other'];
-export const skintones = {
-  'option 1': 'Dark',
-  'option 2': 'Dark-Brown',
-  'option 3': 'Brown',
-  'option 4': 'Tan',
-  'option 5': 'White',
-};
 
 // Below are column numbers from the Community feedback spreadsheet (Form Responses 1)
 // Needs to be updated when column numbers changed on the feedback form.

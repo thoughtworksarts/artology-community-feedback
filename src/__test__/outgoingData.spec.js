@@ -148,7 +148,7 @@ describe('generateScoresForCategory', () => {
           category,
           properties,
           releaseVersions,
-          artworks,
+          Object.keys(artworks),
           feedbackForm
         )
       ).toEqual({
@@ -250,7 +250,11 @@ describe('generateArtworkEffectiveScores', () => {
     ];
     const feedbackForm = new FeedbackForm(feedbackEntries);
     expect(
-      convertData.generateArtworkEffectiveScores(artworks, releaseVersion, feedbackForm)
+      convertData.generateArtworkEffectiveScores(
+        Object.keys(artworks),
+        releaseVersion,
+        feedbackForm
+      )
     ).toEqual({
       afl: 7.5,
       output: 8,
@@ -313,7 +317,12 @@ describe('generateArtworkEffectiveScores', () => {
     ];
     const feedbackForm = new FeedbackForm(feedbackEntries);
     expect(
-      convertData.generateArtworkEffectiveScores(artworks, releaseVersion, feedbackForm, true)
+      convertData.generateArtworkEffectiveScores(
+        Object.keys(artworks),
+        releaseVersion,
+        feedbackForm,
+        true
+      )
     ).toEqual({
       afl: 7.5,
       output: 0,

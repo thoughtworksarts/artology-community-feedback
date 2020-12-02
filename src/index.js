@@ -62,7 +62,7 @@ export default function main() {
         category,
         listOfUniqueEntries,
         [latestRelease],
-        artworks,
+        Object.keys(artworks),
         feedbackForm
       ),
       category,
@@ -73,7 +73,7 @@ export default function main() {
   });
 
   printer.printEffectiveScorePerArtworkTable(
-    convertData.generateArtworkEffectiveScores(artworks, latestRelease, feedbackForm),
+    convertData.generateArtworkEffectiveScores(Object.keys(artworks), latestRelease, feedbackForm),
     init.finalDataSheet,
     31,
     'Average Effective Score'
@@ -92,7 +92,12 @@ export default function main() {
   );
 
   printer.printEffectiveScorePerArtworkTable(
-    convertData.generateArtworkEffectiveScores(artworks, latestRelease, feedbackForm, true),
+    convertData.generateArtworkEffectiveScores(
+      Object.keys(artworks),
+      latestRelease,
+      feedbackForm,
+      true
+    ),
     init.finalDataSheet,
     41,
     'Interactive Portion Effective Score'

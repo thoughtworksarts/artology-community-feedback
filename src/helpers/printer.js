@@ -1,5 +1,6 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable import/prefer-default-export */
+import { artworks } from '../config';
 
 export function printEffectiveScorePerReleaseTable(
   object,
@@ -40,8 +41,10 @@ export function printDistroTable(object, category, finalDataSheet, startTableCol
 
   Object.keys(object).forEach((version) => {
     Object.keys(object[version]).forEach((artwork, j) => {
-      // Print Table first Column header
-      finalDataSheet.getRange(2, j + startTableColumn + 1).setValue(artwork.toUpperCase());
+      // Print Table Column headers
+      finalDataSheet
+        .getRange(2, j + startTableColumn + 1)
+        .setValue(artworks[artwork].toUpperCase());
       Object.keys(object[version][artwork][category])
         .filter((property) => property != '')
         .forEach((property, i) => {
@@ -65,7 +68,7 @@ export function printEffectiveScorePerArtworkTable(
 
   Object.keys(object).forEach((key, idx) => {
     // Set column Header
-    finalDataSheet.getRange(idx + 3, startTableColumn).setValue(key.toUpperCase());
+    finalDataSheet.getRange(idx + 3, startTableColumn).setValue(artworks[key].toUpperCase());
     // Fill in column Data
     finalDataSheet.getRange(idx + 3, startTableColumn + 1).setValue(object[key]);
   });
