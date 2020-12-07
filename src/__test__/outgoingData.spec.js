@@ -171,24 +171,6 @@ describe('generateScoresForCategory', () => {
               '': 0,
             },
           },
-          pio: {
-            gender: {
-              male: 0,
-              female: 0,
-              'non-binary': 0,
-              other: 0,
-              '': 0,
-            },
-          },
-          sp: {
-            gender: {
-              male: 4,
-              female: 1,
-              'non-binary': 0,
-              other: 0,
-              '': 0,
-            },
-          },
         },
       });
     });
@@ -258,8 +240,6 @@ describe('generateArtworkEffectiveScores', () => {
     ).toEqual({
       afl: 7.5,
       output: 8,
-      pio: 0,
-      sp: 2.5,
     });
   });
 
@@ -326,8 +306,6 @@ describe('generateArtworkEffectiveScores', () => {
     ).toEqual({
       afl: 7.5,
       output: 0,
-      pio: 0,
-      sp: 0,
     });
   });
 });

@@ -26,24 +26,6 @@ export function processEffectiveScores(data, idx) {
           isInteractive
         )
       );
-    } else if (form.pioEffectiveScoreColumns.includes(columnNumber)) {
-      const isInteractive = form.pioInteractiveExperienceColumns.includes(columnNumber);
-      scores.push(
-        new EffectiveScore(
-          utility.convertEmptyCellToZero(data[idx][columnNumber]),
-          'pio',
-          isInteractive
-        )
-      );
-    } else if (form.spEffectiveScoreColumns.includes(columnNumber)) {
-      const isInteractive = form.spInteractiveExperienceColumns.includes(columnNumber);
-      scores.push(
-        new EffectiveScore(
-          utility.convertEmptyCellToZero(data[idx][columnNumber]),
-          'sp',
-          isInteractive
-        )
-      );
     } else {
       scores.push(
         new EffectiveScore(
