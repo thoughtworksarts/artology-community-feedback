@@ -20,3 +20,13 @@ export const regionColumn = 5; // Column number for Country
 export const genderColumn = 6; // Column number for Gender data
 export const skintoneColumn = 8; // Column number for Skintone data
 export const ethnicityColumn = 7; // Column number for ethnicity data
+
+export const esColumnGroup = {
+  afl: aflEffectiveScoreColumns,
+  output: outputEffectiveScoreColumns,
+};
+
+export const iesColumnGroup = {
+  afl: aflInteractiveExperienceColumns,
+  output: outputInteractiveExperienceColumns,
+};

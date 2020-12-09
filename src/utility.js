@@ -12,7 +12,7 @@ export function convertEmptyCellToZero(value) {
 
 export function isValidReleaseVersion(version) {
   const regex = /[0-9]+\.[0-9]+\s\([0-9]+\)/g;
-  return version.match(regex);
+  return !!version.toString().match(regex);
 }
 
 export function processGenderData(data) {

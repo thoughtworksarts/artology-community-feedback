@@ -21,4 +21,16 @@ describe('utility', () => {
     expect(utility.moduloWhenOdd(6, 3)).toEqual(0);
     expect(utility.moduloWhenOdd(1, 3)).toEqual(1);
   });
+
+  it('isValidReleaseVersion should return true when version number is in correct format', () => {
+    const correctReleaseVersion = '1.0 (13)';
+    expect(utility.isValidReleaseVersion(correctReleaseVersion)).toBe(true);
+  });
+
+  it('isValidReleaseVersion should return true when version number is in correct format', () => {
+    const incorrectReleaseVersion = '1.0 13)';
+    const incorrectReleaseVersion2 = 1.0;
+    expect(utility.isValidReleaseVersion(incorrectReleaseVersion)).toBe(false);
+    expect(utility.isValidReleaseVersion(incorrectReleaseVersion2)).toBe(false);
+  });
 });
