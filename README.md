@@ -40,6 +40,6 @@ In the root directory of the project run:
 
 1. In config.js, add new artwork's initials and name as key/value pairs to the 'artwork' object i.e: `'afl': 'A Fathers Lulliby'`.
 
-2. In [Soft Launch - ARtology Feedback (Responses)](https://docs.google.com/spreadsheets/d/18F_tIALjo9PoAtQdsiqkgl4piwYnKXNEAE_JzPakjiU/edit#gid=871407089) Form Responses 1 sheet, find the column numbers that correspond with the artworks effectiveness score question on the feedback form. Then add those numbers to the effectiveScoreColumns, artworkEffectiveScoreColumns (create if does not exist) and artworkInteractiveExperienceColumns (if has interactive portion) arrays in config.js.
+2. In [Soft Launch - ARtology Feedback (Responses)](https://docs.google.com/spreadsheets/d/18F_tIALjo9PoAtQdsiqkgl4piwYnKXNEAE_JzPakjiU/edit#gid=871407089) Form Responses 1 sheet, find the column numbers that correspond to effectiveness score for that artwork. Add the column numbers to the effectiveScoreColumns, artworkEffectiveScoreColumns (create if does not exist) and artworkInteractiveExperienceColumns (if has interactive portion) arrays in config.js.
 
 3. Add the arwork's effectivescore and InteractiveExperience arrays created in step 2 to the esColumnGroup and iesColumnGroup object in config.js.
