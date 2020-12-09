@@ -35,3 +35,11 @@ Clone the [artology-community-feedback](https://github.com/thoughtworksarts/arto
 
 In the root directory of the project run:
 `npm run deploy`
+
+## Updating Script with new Artwork
+
+1. In config.js, add the new artwork to the 'artwork' object where the key is the initials and the value is the artwork name (i.e { 'afl': 'A Fathers Lulliby' }).
+
+2. In [Soft Launch - ARtology Feedback (Responses)](https://docs.google.com/spreadsheets/d/18F_tIALjo9PoAtQdsiqkgl4piwYnKXNEAE_JzPakjiU/edit#gid=871407089) Form Responses 1 sheet, find the column numbers that correspond with the artworks effectiveness score question on the feedback form. Then add those numbers to the effectiveScoreColumns, artworkEffectiveScoreColumns (create if does not exist) and artworkInteractiveExperienceColumns (if has interactive portion) arrays in config.js.
+
+3. Add the arwork's effectivescore and InteractiveExperience arrays created in step 2 to the esColumnGroup and iesColumnGroup object in config.js.
