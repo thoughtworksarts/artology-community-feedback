@@ -87,7 +87,13 @@ export default function main() {
       'device'
     ),
     init.finalDataSheet,
-    ['Release Version', 'Low End (iPhone)', 'High End (iPhone)', 'Android', 'Other'],
+    [
+      'Release Version',
+      'Without TrueDepth (iPhone)',
+      'With TrueDepth (iPhone)',
+      'Android',
+      'Other',
+    ],
     35
   );
 

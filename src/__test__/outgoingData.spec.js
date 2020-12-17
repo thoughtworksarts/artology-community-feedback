@@ -27,7 +27,7 @@ describe('generateEffectScorePerReleaseData', () => {
       gender: 'male',
       ethnicity: 'asian',
       skintone: 'option 1',
-      deviceCategory: 'low end',
+      deviceCategory: 'without truedepth',
       environment: 'indoor',
       effectiveScores: scores1,
     };
@@ -38,7 +38,7 @@ describe('generateEffectScorePerReleaseData', () => {
       gender: 'female',
       ethnicity: 'none',
       skintone: 'option 3',
-      deviceCategory: 'high end',
+      deviceCategory: 'with truedepth',
       environment: 'outdoor',
       effectiveScores: scores2,
     };
@@ -49,7 +49,7 @@ describe('generateEffectScorePerReleaseData', () => {
       gender: 'female',
       ethnicity: 'none',
       skintone: 'option 3',
-      deviceCategory: 'high end',
+      deviceCategory: 'with truedepth',
       environment: 'outdoor',
       effectiveScores: scores2,
     };
@@ -109,7 +109,7 @@ describe('generateScoresForCategory', () => {
         gender: 'male',
         ethnicity: 'asian',
         skintone: 'option 1',
-        deviceCategory: 'low end',
+        deviceCategory: 'without truedepth',
         environment: 'indoor',
         effectiveScores: scores1,
       };
@@ -120,7 +120,7 @@ describe('generateScoresForCategory', () => {
         gender: 'female',
         ethnicity: 'none',
         skintone: 'option 3',
-        deviceCategory: 'high end',
+        deviceCategory: 'with truedepth',
         environment: 'outdoor',
         effectiveScores: scores2,
       };
@@ -131,7 +131,7 @@ describe('generateScoresForCategory', () => {
         gender: 'female',
         ethnicity: 'none',
         skintone: 'option 3',
-        deviceCategory: 'high end',
+        deviceCategory: 'with truedepth',
         environment: 'outdoor',
         effectiveScores: scores2,
       };
@@ -198,7 +198,7 @@ describe('generateArtworkEffectiveScores', () => {
       gender: 'male',
       ethnicity: 'asian',
       skintone: 'option 1',
-      deviceCategory: 'low end',
+      deviceCategory: 'without truedepth',
       environment: 'indoor',
       effectiveScores: scores1,
     };
@@ -209,7 +209,7 @@ describe('generateArtworkEffectiveScores', () => {
       gender: 'female',
       ethnicity: 'none',
       skintone: 'option 3',
-      deviceCategory: 'high end',
+      deviceCategory: 'with truedepth',
       environment: 'outdoor',
       effectiveScores: scores2,
     };
@@ -220,7 +220,7 @@ describe('generateArtworkEffectiveScores', () => {
       gender: 'female',
       ethnicity: 'none',
       skintone: 'option 3',
-      deviceCategory: 'high end',
+      deviceCategory: 'with truedepth',
       environment: 'outdoor',
       effectiveScores: scores2,
     };
@@ -263,7 +263,7 @@ describe('generateArtworkEffectiveScores', () => {
       gender: 'male',
       ethnicity: 'asian',
       skintone: 'option 1',
-      deviceCategory: 'low end',
+      deviceCategory: 'without truedepth',
       environment: 'indoor',
       effectiveScores: scores1,
     };
@@ -274,7 +274,7 @@ describe('generateArtworkEffectiveScores', () => {
       gender: 'female',
       ethnicity: 'none',
       skintone: 'option 3',
-      deviceCategory: 'high end',
+      deviceCategory: 'with truedepth',
       environment: 'outdoor',
       effectiveScores: scores2,
     };
@@ -285,7 +285,7 @@ describe('generateArtworkEffectiveScores', () => {
       gender: 'female',
       ethnicity: 'none',
       skintone: 'option 3',
-      deviceCategory: 'high end',
+      deviceCategory: 'with truedepth',
       environment: 'outdoor',
       effectiveScores: scores2,
     };

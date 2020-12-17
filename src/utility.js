@@ -40,11 +40,11 @@ export function processEnvironmentData(data) {
 
 export function processDeviceCategoryData(data) {
   const category = data.toLowerCase();
-  if (category.includes('low end')) {
-    return 'low end';
+  if (category.includes('without truedepth')) {
+    return 'without truedepth';
   }
-  if (category.includes('high end')) {
-    return 'high end';
+  if (category.includes('with truedepth')) {
+    return 'with truedepth';
   }
   if (category.includes('android')) {
     return 'android';

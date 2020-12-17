@@ -48,7 +48,7 @@ describe('FeedbackForm', () => {
       gender: 'female',
       ethnicity: 'white',
       skintone: 'option 4',
-      deviceCategory: 'low end',
+      deviceCategory: 'without truedepth',
       environment: 'indoor',
       effectiveScores: effectiveScores2,
     };
@@ -59,7 +59,7 @@ describe('FeedbackForm', () => {
       gender: 'female',
       ethnicity: 'white',
       skintone: 'option 3',
-      deviceCategory: 'low end',
+      deviceCategory: 'without truedepth',
       environment: 'indoor',
       effectiveScores: effectiveScores3,
     };
@@ -102,7 +102,9 @@ describe('FeedbackForm', () => {
     it('should filter by device category', () => {
       const feedbackForm = new FeedbackForm(feedbackEntries);
       expect(feedbackForm.filterBy(feedbackEntries, 'device', 'android').length).toEqual(1);
-      expect(feedbackForm.filterBy(feedbackEntries, 'device', 'low end').length).toEqual(2);
+      expect(feedbackForm.filterBy(feedbackEntries, 'device', 'without truedepth').length).toEqual(
+        2
+      );
     });
   });
 
@@ -179,7 +181,7 @@ describe('FeedbackForm', () => {
         gender: 'female',
         ethnicity: 'white',
         skintone: 'option 3',
-        deviceCategory: 'low end',
+        deviceCategory: 'with TrueDepth',
         environment: 'indoor',
         effectiveScores: scores,
       };
@@ -233,7 +235,7 @@ describe('FeedbackForm', () => {
         gender: 'female',
         ethnicity: 'white',
         skintone: 'option 3',
-        deviceCategory: 'low end',
+        deviceCategory: 'with TrueDepth',
         environment: 'indoor',
         effectiveScores: scores,
       };

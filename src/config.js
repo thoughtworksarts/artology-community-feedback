@@ -4,7 +4,7 @@ export const artworks = {
 };
 export const environments = ['indoor', 'outdoor', 'other'];
 export const categories = ['regions', 'gender', 'skintone', 'ethnicity'];
-export const deviceCategories = ['low end', 'high end', 'android', 'other'];
+export const deviceCategories = ['without truedepth', 'with truedepth', 'android', 'other'];
 
 // Below are column numbers from the Community feedback spreadsheet (Form Responses 1)
 // Needs to be updated when column numbers changed on the feedback form.
