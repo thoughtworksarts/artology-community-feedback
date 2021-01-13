@@ -171,6 +171,15 @@ describe('generateScoresForCategory', () => {
               '': 0,
             },
           },
+          sp: {
+            gender: {
+              '': 0,
+              female: 1,
+              male: 4,
+              'non-binary': 0,
+              other: 0,
+            },
+          },
         },
       });
     });
@@ -240,6 +249,7 @@ describe('generateArtworkEffectiveScores', () => {
     ).toEqual({
       afl: 7.5,
       output: 8,
+      sp: 2.5,
     });
   });
 
@@ -306,6 +316,7 @@ describe('generateArtworkEffectiveScores', () => {
     ).toEqual({
       afl: 7.5,
       output: 0,
+      sp: 0,
     });
   });
 });
