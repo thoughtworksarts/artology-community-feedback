@@ -1,7 +1,7 @@
 export const artworks = {
   afl: "A Father's Lullaby",
   output: 'Output',
-  sp: "Seismic Percussion"
+  sp: 'Seismic Percussion',
 };
 export const environments = ['indoor', 'outdoor', 'other'];
 export const categories = ['regions', 'gender', 'skintone', 'ethnicity'];
@@ -33,5 +33,5 @@ export const esColumnGroup = {
 export const iesColumnGroup = {
   afl: aflInteractiveExperienceColumns,
   output: outputInteractiveExperienceColumns,
-  sp: spInteractiveExperienceColumns
+  sp: spInteractiveExperienceColumns,
 };
