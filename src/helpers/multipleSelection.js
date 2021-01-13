@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import * as utility from '../utility';
-import FeedbackEntry from '../components/FeedbackEntry';
+import FeedbackEntry from '../components/FeedBackEntry';
 import * as incomingData from '../dataPorcessors/incomingData';
 
 export function handleMultipleSections(
