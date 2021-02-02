@@ -8,6 +8,7 @@ export default class FeedbackEntry {
     country,
     gender,
     ethnicity,
+    age,
     skintone,
     deviceCategory,
     environment,
@@ -17,6 +18,7 @@ export default class FeedbackEntry {
     this.country = country;
     this.gender = gender;
     this.ethnicity = ethnicity;
+    this.age = age;
     this.skintone = skintone;
     this.deviceCategory = deviceCategory;
     this.environment = environment;
@@ -60,6 +62,10 @@ export default class FeedbackEntry {
 
   getEthnicity() {
     return this.ethnicity;
+  }
+
+  getAge(){
+    return this.age;
   }
 
   getSkintone() {

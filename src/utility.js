@@ -24,6 +24,23 @@ export function processGenderData(data) {
 
   return gender;
 }
+export function processAgeData(data) {
+  const age = data;
+
+  if (
+    !(
+      age === 'Under 35' ||
+      age === '35-54' ||
+      age === '55 and over' ||
+      age === 'Prefer not to answer'
+    ) ||
+    age === ''
+  ) {
+    return 'other';
+  }
+
+  return age;
+}
 
 export function processEnvironmentData(data) {
   let env;

@@ -17,6 +17,7 @@ function getFormEntries() {
       appVersion: formData[i][form.releaseVersionColumn],
       userCountry: formData[i][form.regionColumn].toLowerCase(),
       usergender: utility.processGenderData(formData[i][form.genderColumn]),
+      userage: utility.processAgeData(formData[i][form.ageColumn]),
       userEthnicitys: utility.handleMultipleSelections(
         formData[i][form.ethnicityColumn].toLowerCase()
       ),

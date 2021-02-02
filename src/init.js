@@ -36,6 +36,7 @@ const categories = {
   gender: form.genderColumn,
   skintone: form.skintoneColumn,
   ethnicity: form.ethnicityColumn,
+  age: form.ageColumn,
 };
 
 export function getAllValuesFor(category) {
@@ -64,6 +65,7 @@ const entries = {
   ethnicity: (category) => {
     return getAllValuesFor(category);
   },
+  age: ['Under 35', '35-54', '55 and above', 'Prefer not to answer', 'other', ''],
 };
 
 export function getAllEntriesFor(category) {

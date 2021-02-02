@@ -22,6 +22,7 @@ describe('App', () => {
       userCountry: 'United States',
       usergender: 'Male',
       userEthnicitys: ['African American/Black', 'White', 'Asian'],
+      userage:35,
       userSkintones: ['Option 1', 'Option 2'],
       userDeviceCategory: 'Android',
       userEnvironment: 'Indoor low light',

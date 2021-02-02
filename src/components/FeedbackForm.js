@@ -42,6 +42,8 @@ export default class FeedbackForm {
         bool = feedbackEntry.getGender() === value;
       } else if (category === 'ethnicity') {
         bool = feedbackEntry.getEthnicity() === value;
+      } else if (category === 'age') {
+        bool = feedbackEntry.getAge() === value;
       } else if (category === 'skintone') {
         bool = feedbackEntry.getSkintone() === value;
       } else if (category === 'device') {
