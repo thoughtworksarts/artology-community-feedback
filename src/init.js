@@ -69,7 +69,9 @@ const entries = {
 };
 
 export function getAllEntriesFor(category) {
-  return category === 'gender' ? entries[category] : entries[category](category);
+  return category === 'gender' || category === 'age'
+    ? entries[category]
+    : entries[category](category);
 }
 
 export function getLatestRelease() {
