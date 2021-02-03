@@ -15,6 +15,22 @@ export function isValidReleaseVersion(version) {
   return !!version.toString().match(regex);
 }
 
+export function processVersionData(data) {
+  let version;
+  let build;
+  data.split(', ').forEach((array, index) => {
+    if (index === 0) {
+      // eslint-disable-next-line prefer-destructuring
+      version = array.split(' ')[1];
+    } else {
+      // eslint-disable-next-line prefer-destructuring
+      build = array.split(' ')[1];
+    }
+  });
+
+  return `${version} (${build})`;
+}
+
 export function processGenderData(data) {
   const gender = data.toLowerCase();
 
@@ -32,9 +48,9 @@ export function processAgeData(data) {
       age === 'Under 35' ||
       age === '35-54' ||
       age === '55 and over' ||
-      age === 'Prefer not to answer'
-    ) ||
-    age === ''
+      age === 'Prefer not to answer' ||
+      age === ''
+    )
   ) {
     return 'other';
   }

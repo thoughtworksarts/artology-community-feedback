@@ -14,7 +14,7 @@ function getFormEntries() {
   const formEntries = [];
   for (let i = 1; i < lastRow; i++) {
     const intialData = {
-      appVersion: formData[i][form.releaseVersionColumn],
+      appVersion: utility.processVersionData(formData[i][form.releaseVersionColumn]),
       userCountry: formData[i][form.regionColumn].toLowerCase(),
       usergender: utility.processGenderData(formData[i][form.genderColumn]),
       userage: utility.processAgeData(formData[i][form.ageColumn]),
@@ -76,7 +76,7 @@ export default function main() {
   printer.printEffectiveScorePerArtworkTable(
     convertData.generateArtworkEffectiveScores(Object.keys(artworks), latestRelease, feedbackForm),
     init.finalDataSheet,
-    31,
+    37,
     'Average Effective Score'
   );
 
@@ -95,7 +95,7 @@ export default function main() {
       'Android',
       'Other',
     ],
-    35
+    41
   );
 
   printer.printEffectiveScorePerArtworkTable(
@@ -106,7 +106,7 @@ export default function main() {
       true
     ),
     init.finalDataSheet,
-    41,
+    48,
     'Interactive Portion Effective Score'
   );
 }

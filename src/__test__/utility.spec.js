@@ -33,4 +33,9 @@ describe('utility', () => {
     expect(utility.isValidReleaseVersion(incorrectReleaseVersion)).toBe(false);
     expect(utility.isValidReleaseVersion(incorrectReleaseVersion2)).toBe(false);
   });
+
+  it('processVersionData should app version in the correct format', () => {
+    const versionData = 'Version 1.0, Build 24';
+    expect(utility.processVersionData(versionData)).toEqual('1.0 (24)');
+  });
 });
