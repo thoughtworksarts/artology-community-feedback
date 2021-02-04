@@ -16,6 +16,10 @@ export const outputEffectiveScoreColumns = [35, 39, 40, 42]; // Column numbers f
 export const outputInteractiveExperienceColumns = [39, 40]; // Column numbers for interactive experience score data for Output
 export const spEffectiveScoreColumns = [47, 51, 52, 56]; // Column numbers for effective score data for Seismic Percussion
 export const spInteractiveExperienceColumns = [51, 52]; // Column numbers for interactive experience score data for Seismic Percussion
+export const innovativeScoreColumns = [17, 21, 26, 30, 37, 44, 49, 54]; // Column numbers for Innovative score data
+export const aflInnovativeScoreColumns = [26, 30];
+export const outputInnovativeScoreColumns = [37, 44];
+export const spInnovativeScoreColumns = [49, 54];
 export const usageTypeColumn = 12; // Column number for usage type (indoor/outdoor) data
 export const deviceCategoryColumn = 2; // Column number for device category data (high-end, low-end, android)
 export const releaseVersionColumn = 1; // Column Number for release dates/versions
@@ -35,4 +39,10 @@ export const iesColumnGroup = {
   afl: aflInteractiveExperienceColumns,
   output: outputInteractiveExperienceColumns,
   sp: spInteractiveExperienceColumns,
+};
+
+export const innovativeesColumnGroup = {
+  afl: aflInnovativeScoreColumns,
+  output: outputInnovativeScoreColumns,
+  sp: spInnovativeScoreColumns,
 };

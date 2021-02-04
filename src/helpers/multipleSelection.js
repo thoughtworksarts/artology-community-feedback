@@ -36,6 +36,7 @@ export function handleMultipleSections(
             deviceCategory: userDeviceCategory,
             environment: userEnvironment,
             effectiveScores: incomingData.processEffectiveScores(formData, i),
+            innovativeScores: incomingData.processInnovativeScores(formData, i),
           })
         );
       });
@@ -52,6 +53,7 @@ export function handleMultipleSections(
             deviceCategory: userDeviceCategory,
             environment: userEnvironment,
             effectiveScores: incomingData.processEffectiveScores(formData, i),
+            innovativeScores: incomingData.processInnovativeScores(formData, i),
           })
         );
       });
@@ -69,6 +71,7 @@ export function handleMultipleSections(
         deviceCategory: userDeviceCategory,
         environment: userEnvironment,
         effectiveScores: incomingData.processEffectiveScores(formData, i),
+        innovativeScores: incomingData.processInnovativeScores(formData, i),
       })
     );
   }

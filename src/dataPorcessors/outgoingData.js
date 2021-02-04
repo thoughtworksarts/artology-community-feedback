@@ -73,3 +73,12 @@ export function generateArtworkEffectiveScores(
 
   return obj;
 }
+export function generateArtworkInnovativeScores(artworks, releaseVersion, feedbackForm) {
+  const obj = {};
+  const filterBy = { version: releaseVersion };
+  artworks.forEach((artwork) => {
+    feedbackForm.getOverallInnovativeScoreFor(artwork, filterBy);
+  });
+
+  return obj;
+}

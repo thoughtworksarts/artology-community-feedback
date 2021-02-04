@@ -109,6 +109,13 @@ export default function main() {
     48,
     'Interactive Portion Effective Score'
   );
+
+  printer.printInnovativeScorePerArtworkTable(
+    convertData.generateArtworkInnovativeScores(Object.keys(artworks), latestRelease, feedbackForm),
+    init.finalDataSheet,
+    54,
+    'Innovative Score'
+  );
 }
 
 global.main = main;

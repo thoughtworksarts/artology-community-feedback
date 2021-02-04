@@ -13,6 +13,8 @@ export default class FeedbackEntry {
     deviceCategory,
     environment,
     effectiveScores,
+    innovativeScores,
+    
   }) {
     this.appVersion = version;
     this.country = country;
@@ -23,6 +25,7 @@ export default class FeedbackEntry {
     this.deviceCategory = deviceCategory;
     this.environment = environment;
     this.effectiveScores = effectiveScores;
+    this.innovativeScores = innovativeScores;
   }
 
   getAverageEffectiveScoreFor(artwork = false) {
@@ -39,6 +42,22 @@ export default class FeedbackEntry {
     });
     return count === 0 ? { avgScore: 0, countEntry: false } : { avgScore: cumScore / count, countEntry: true};
   }
+
+  getAverageInnovativeScoreFor(artwork = false) {
+    let cumScore = 0;
+    let count = 0;
+    this.innovativeScores.forEach((innovativeScore) => {
+      if (!artwork && !innovativeScore.getScore() == '') {
+        cumScore += innovativeScore.getScore();
+        count++;
+      } else if (innovativeScore.getArtwork() === artwork && !(innovativeScore.getScore() == '')) {
+        cumScore += innovativeScore.getScore();
+        count++;
+      }
+    });
+    return count === 0 ? { avgScore: 0, countEntry: false } : { avgScore: cumScore / count, countEntry: true};
+  }
+
 
   getAverageInteractiveScoreFor(artwork) {
     let cumScore = 0;
