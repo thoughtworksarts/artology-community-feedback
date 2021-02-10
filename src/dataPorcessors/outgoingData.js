@@ -77,7 +77,7 @@ export function generateArtworkInnovativeScores(artworks, releaseVersion, feedba
   const obj = {};
   const filterBy = { version: releaseVersion };
   artworks.forEach((artwork) => {
-    feedbackForm.getOverallInnovativeScoreFor(artwork, filterBy);
+    obj[artwork] = feedbackForm.getOverallInnovativeScoreFor(artwork, filterBy);
   });
 
   return obj;
