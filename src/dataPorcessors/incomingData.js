@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
 import EffectiveScore from '../components/EffectveScore';
+import InnovativeScore from '../components/InnovativeScore';
 import * as form from '../config';
 import * as utility from '../utility';
 
@@ -45,14 +46,14 @@ export function processInnovativeScores(data, idx) {
       if (form.innovativeesColumnGroup[artwork].includes(columnNumber)) {
         isNotArtworkColumn = false;
         scores.push(
-          new EffectiveScore(utility.convertEmptyCellToZero(data[idx][columnNumber]), artwork)
+          new InnovativeScore(utility.convertEmptyCellToZero(data[idx][columnNumber]), artwork)
         );
       }
     });
     // If the current innovativeness score column does not belong to any artwork its a general innovativeness score entry
     if (isNotArtworkColumn) {
       scores.push(
-        new EffectiveScore(
+        new InnovativeScore(
           utility.convertEmptyCellToZero(data[idx][columnNumber]),
           'general',
           false
