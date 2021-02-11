@@ -73,3 +73,18 @@ export function printEffectiveScorePerArtworkTable(
     finalDataSheet.getRange(idx + 3, startTableColumn + 1).setValue(object[key]);
   });
 }
+export function printInnovativeScorePerArtworkTable(
+  object,
+  finalDataSheet,
+  startTableColumn,
+  columnTitle
+) {
+  finalDataSheet.getRange(2, startTableColumn + 1).setValue(columnTitle);
+
+  Object.keys(object).forEach((key, idx) => {
+    // Set column Header
+    finalDataSheet.getRange(idx + 3, startTableColumn).setValue(artworks[key].toUpperCase());
+    // Fill in column Data
+    finalDataSheet.getRange(idx + 3, startTableColumn + 1).setValue(object[key]);
+  });
+}
